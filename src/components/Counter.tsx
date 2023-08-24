@@ -7,7 +7,8 @@ import Detail from "./Detail";
 
 export default function Counter() {
   const { textValue, onChangeText } = useTextInput();
-  const { words } = useCounter(textValue);
+  const { words, characters, charactersNoSpaces, paragraphs, sentences } =
+    useCounter(textValue);
 
   return (
     <>
@@ -17,10 +18,10 @@ export default function Counter() {
           <h4 className="mb-4">Details</h4>
           <ul className=" flex flex-col gap-4">
             <Detail name="Words" data={words} />
-            <Detail name="Characters (with spaces)" data={words} />
-            <Detail name="Characters (no spaces)" data={words} />
-            <Detail name="Paragraphs" data={words} />
-            <Detail name="Sentences" data={words} />
+            <Detail name="Characters (with spaces)" data={characters} />
+            <Detail name="Characters (no spaces)" data={charactersNoSpaces} />
+            <Detail name="Paragraphs" data={paragraphs} />
+            <Detail name="Sentences" data={sentences} />
           </ul>
         </div>
       </div>
