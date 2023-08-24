@@ -1,8 +1,10 @@
 "use client";
 
+import { countCharacters } from "@/counter/countCharacters";
+import { countParagraphs } from "@/counter/countParagraphs";
+import { countSentences } from "@/counter/countSentences";
+import { countWords } from "@/counter/countWords";
 import { useEffect, useState } from "react";
-
-const ESPECIAL_CHARACTERS = `!@#$%^&*()_+{}:"|<>?,./;'\\[]~\``;
 
 export default function useCounter(textValue: string) {
   const [words, setWords] = useState<number>(0);
@@ -10,49 +12,6 @@ export default function useCounter(textValue: string) {
   const [charactersNoSpaces, seCharactersNoSpaces] = useState<number>(0);
   const [paragraphs, setParagraphs] = useState<number>(0);
   const [sentences, setSentences] = useState<number>(0);
-
-  function countWords(textValue: string): number {
-    const textSplitted = textValue.split(" ");
-    const removeEmptySpaces = textSplitted.filter((word) => word !== "");
-    const removeEspecialCharacters = removeEmptySpaces.filter(
-      (word) => !ESPECIAL_CHARACTERS.includes(word)
-    );
-    return removeEspecialCharacters.length;
-  }
-
-  function countCharacters(textValue: string): {
-    characterCounter: number;
-    charactersNoSpacesCounter: number;
-  } {
-    const noSpaces = textValue
-      .split("")
-      .filter((x) => x !== " ")
-      .join("");
-    return {
-      characterCounter: textValue.length,
-      charactersNoSpacesCounter: noSpaces.length,
-    };
-  }
-
-  function countParagraphs(textValue: string): number {
-    const removeSpaces = textValue
-      .split("")
-      .filter((x) => x !== " ")
-      .join("");
-    const textSplitted = removeSpaces.split(/\r?\n/);
-    const removeEmptySpaces = textSplitted.filter((x) => x !== "");
-    return removeEmptySpaces.length;
-  }
-
-  function countSentences(textValue: string): number {
-    const removeSpaces = textValue
-      .split("")
-      .filter((x) => x !== " ")
-      .join("");
-    const textSplitted = removeSpaces.split(/[\n\\.!?]/);
-    const removeEmptySpaces = textSplitted.filter((x) => x !== "");
-    return removeEmptySpaces.length;
-  }
 
   useEffect(() => {
     const wordCounter = countWords(textValue);
