@@ -12,9 +12,9 @@ export default function Counter() {
 
   return (
     <>
-      <div className="w-full flex gap-5">
+      <div className="w-full flex gap-3 sm:gap-5 px-3 sm:px-5 flex-col md:flex-row">
         <TextArea textValue={textValue} onChangeText={onChangeText} />
-        <div className=" bg-gray-700 rounded-xl p-4 w-72">
+        <div className=" bg-gray-700 rounded-xl p-4 flex-shrink md:w-72 md:flex-shrink-0">
           <h4 className="mb-4">Details</h4>
           <ul className=" flex flex-col gap-4">
             <Detail name="Words" data={words} />

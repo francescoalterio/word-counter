@@ -12,7 +12,7 @@ export default function TextArea({ textValue, onChangeText }: Props) {
       placeholder="Text here"
       onChange={onChangeText}
       value={textValue}
-      className=" flex-1 resize-none bg-gray-700 rounded-xl p-4 outline-none"
+      className=" flex-1 resize-none min-h-[300px] text-xs sm:text-sm md:text-base md:min-h-0 bg-gray-700 rounded-xl p-4 outline-none"
     ></textarea>
   );
 }
