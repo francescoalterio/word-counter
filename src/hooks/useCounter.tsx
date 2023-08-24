@@ -14,7 +14,10 @@ export default function useCounter(textValue: string) {
   function countWords(textValue: string): number {
     const textSplitted = textValue.split(" ");
     const removeEmptySpaces = textSplitted.filter((word) => word !== "");
-    return removeEmptySpaces.length;
+    const removeEspecialCharacters = removeEmptySpaces.filter(
+      (word) => !ESPECIAL_CHARACTERS.includes(word)
+    );
+    return removeEspecialCharacters.length;
   }
 
   function countCharacters(textValue: string): {
